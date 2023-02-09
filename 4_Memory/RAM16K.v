@@ -9,8 +9,8 @@ module RAM16K(
   );
 
   reg signed [15:0] data [0:16383];
+  integer i;
   initial begin
-    integer i;
     for (i = 0; i <= 16383; i = i+1) 
       data[i] = 16'b0;
   end
