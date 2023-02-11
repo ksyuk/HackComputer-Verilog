@@ -12,7 +12,8 @@ module CPU(
 
   
   // PC
-  wire PCload = instruction[15] && ((instruction[2] && ng) | (instruction[1] && zr) | (instruction[0] && !zr && !ng));
+  wire PCload = instruction[15] &&
+   ((instruction[2] && ng) | (instruction[1] && zr) | (instruction[0] && !zr && !ng));
   PC PC(.in(Aout), .load(PCload), .reset(reset), .out(pc), .CLK(CLK));
   
 
