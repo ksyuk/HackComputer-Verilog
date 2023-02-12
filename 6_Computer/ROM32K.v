@@ -14,4 +14,5 @@ module ROM32K(
   end
 
   assign out = data[address];
+
 endmodule
