@@ -17,7 +17,7 @@ module ALU(
   wire signed [15:0] caluculated = f ? processed_x + processed_y: processed_x & processed_y;
   assign out = no ? ~caluculated : caluculated;
 
-  assign zr = out == 16'b0 ? 1 : 0;
-  assign ng = out[15] == 1'b1 ? 1 : 0;
+  assign zr = out == 16'b0;
+  assign ng = out[15] == 1'b1;
 
 endmodule
