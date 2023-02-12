@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+
 module CPU(
   input [15:0] instruction,
   input signed [15:0] inM,
@@ -24,16 +25,16 @@ module CPU(
 
 
   // ARegister
+  wire [15:0] Ain = instruction[15] ? ALUout : instruction;
   wire Aload = (!instruction[15]) | (instruction[15] && instruction[5]);
   wire signed [15:0] Aout;
-  wire [15:0] Ain = instruction[15] ? ALUout : instruction;
   Register A_Register(.in(Ain), .load(Aload), .out(Aout), .CLK(CLK));
 
 
   // ALU
-  wire zr, ng;
-  wire signed [15:0] ALUout;
   wire [15:0] ALUin = instruction[12] ? inM : Aout;
+  wire signed [15:0] ALUout;
+  wire zr, ng;
   ALU ALU(
     .x(Dout), .y(ALUin),
     .zx(instruction[11]), .nx(instruction[10]), 
