@@ -13,7 +13,12 @@ module Computer(
   wire [14:0] pc;
   
   ROM32K InstructionMemory(.address(pc), .out(instruction));
-  Memory DataMemory(.in(outM), .address(addressM), .load(writeM), .out(inM), .CLK(CLK));
+  Memory DataMemory(
+    .in(outM),
+    .address(addressM),
+    .load(writeM),
+    .out(inM),
+    .CLK(CLK));
   CPU CPUunit(
     .instruction(instruction), 
     .inM(inM), 
